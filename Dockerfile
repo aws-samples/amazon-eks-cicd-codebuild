@@ -11,7 +11,8 @@ RUN \
 ADD https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-07-26/bin/linux/amd64/kubectl /root/bin/kubectl
 ADD  https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-07-26/bin/linux/amd64/aws-iam-authenticator /root/bin/aws-iam-authenticator
 
-RUN chmod a+x /root/bin/kubectl /root/bin/aws-iam-authenticator
+RUN chmod a+x /root/bin/kubectl /root/bin/aws-iam-authenticator; \
+	ln -sf /root/bin/kubectl /usr/bin/kubectl
 COPY kubeconfig /root/.kube/kubeconfig
 COPY entrypoint.sh /root/bin/entrypoint.sh
 

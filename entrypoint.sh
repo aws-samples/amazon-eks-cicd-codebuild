@@ -6,8 +6,13 @@ export PATH=$PATH:/root/bin
 KUBECONFIG=/root/.kube/kubeconfig
 export KUBECONFIG
 
-region=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq .region -r)
-export AWS_DEFAULT_REGION=$region
+if [[ -z $REGION ]]; then
+    echo "REGION not defined, trying to lookup from EC2 metadata..."
+    region=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq .region -r)
+else 
+    echo "got region=$REGION"
+fi
+export AWS_DEFAULT_REGION=${REGION-$region}
 
 CLUSTER_NAMEi=${CLUSTER_NAME-default}
 

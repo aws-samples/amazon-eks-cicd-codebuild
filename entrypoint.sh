@@ -14,7 +14,7 @@ else
 fi
 export AWS_DEFAULT_REGION=${REGION-$region}
 
-CLUSTER_NAMEi=${CLUSTER_NAME-default}
+CLUSTER_NAME=${CLUSTER_NAME-default}
 
 CA_DATA=$(aws eks describe-cluster --name ${CLUSTER_NAME} | jq -r .cluster.certificateAuthority.data)
 EKS_ENDPOINT=$(aws eks describe-cluster --name ${CLUSTER_NAME} | jq -r .cluster.endpoint)

@@ -111,5 +111,6 @@ Make sure you flag **Privileged** in your CodeBuild Environment setting and spec
 # FAQ
 
 Q: Do I need to specify **REGION**  in my CodeBuild environment variables?
+
 A: No. It will determine the running region from the built-in CodeBuild environment varialble **CODEBUILD_AGENT_ENV_CODEBUILD_REGION**, however, if you specify **REGION**, it will override **CODEBUILD_AGENT_ENV_CODEBUILD_REGION**.
 

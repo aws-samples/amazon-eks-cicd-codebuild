@@ -1,3 +1,4 @@
+![](https://codebuild.us-west-2.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiQStpdGJMVDZ6b3BWODRiOGYvanJhTFhsNnZCVnExS1VxcnRManFSeWNjVndrVGRpV1g0QktxNWZONXZsU05WL3luU1ZQbC9jdnh4TWFKbXJ3emQ2Z1BFPSIsIml2UGFyYW1ldGVyU3BlYyI6IjNmUk00TERiZGlDNisvOEsiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
 # eks-kubectl-docker
 **eks-kubectl-docker** is a docker image with `kubectl` and `aws-iam-authenticator` built in the image.
 

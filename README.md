@@ -100,7 +100,7 @@ And you'll see the deployment, replicaset, service as well as the pods are all c
 
 ## Docker in Docker support
 
-**pahud/eks-kubectl-docker** has docker in docker support, which means you can docker build|pull|tag|push in the docker container and optionally push to Amazon ECR or other git repository. Behind the scene, when you bring up **pahud/eks-kubectl-docker** with $CODEBUILD_BUILD_ID environment variable available, which is by default available in AWS CodeBuild, it will start the dockerd for you.
+**pahud/eks-kubectl-docker** has docker in docker support, which means you can docker build|pull|tag|push in the docker container and optionally push to Amazon ECR or other git repository. Behind the scene, when you bring up **pahud/eks-kubectl-docker** with **CODEBUILD_BUILD_ID** environment variable available, which is by default available in AWS CodeBuild, it will start the dockerd for you.
 
 
 

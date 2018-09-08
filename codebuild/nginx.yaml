@@ -22,6 +22,11 @@ spec:
       labels:
         app: nginx-codebuild
     spec:
+      tolerations:
+      - key: "spotInstance"
+        operator: "Equal"
+        value: "true"
+        effect: "PreferNoSchedule"
       containers:
       - name: nginx-codebuild
         image: nginx

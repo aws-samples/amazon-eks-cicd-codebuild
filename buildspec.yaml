@@ -1,0 +1,50 @@
+version: 0.2
+
+env:
+  variables:
+     KUBECONFIG: "/root/.kube/kubeconfig"
+     # key: "value"
+  #parameter-store:
+     # key: "value"
+     # key: "value"
+
+phases:
+  #install:
+    #commands:
+      # - command
+      # - command
+    #finally:
+      # - command
+      # - command
+  pre_build:
+    commands:
+       - /root/bin/entrypoint.sh
+      # - command
+    #finally:
+      # - command
+      # - command
+  build:
+    commands:
+        - cd codebuild
+        - kubectl apply -f nginx.yaml
+    #finally:
+      # - command
+      # - command
+  #post_build:
+    #commands:
+      # - command
+      # - command
+    #finally:
+      # - command
+      # - command
+#artifacts:
+  #files:
+    # - location
+    # - location
+    # - name
+  #discard-paths: yes
+  #base-directory: location
+#cache:
+  #paths:
+    # - path
+    # - path

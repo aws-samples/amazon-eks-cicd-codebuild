@@ -16,7 +16,7 @@ ADD  https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-07-26/bin/linux/a
 
 RUN chmod a+x /usr/bin/kubectl /usr/bin/aws-iam-authenticator
 
-COPY kubeconfig /root/.kube/kubeconfig
+#COPY kubeconfig /root/.kube/kubeconfig
 COPY entrypoint.sh /root/bin/entrypoint.sh
 
 ENTRYPOINT ["/root/bin/entrypoint.sh"]

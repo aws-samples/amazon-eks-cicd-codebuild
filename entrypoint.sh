@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+#set -x
 
 export PATH=$PATH:/root/bin
 
@@ -49,15 +49,11 @@ export AWS_DEFAULT_REGION=$region
 
 CLUSTER_NAME=${CLUSTER_NAME-default}
 
-CA_DATA=$(aws eks describe-cluster --name ${CLUSTER_NAME} | jq -r .cluster.certificateAuthority.data)
-EKS_ENDPOINT=$(aws eks describe-cluster --name ${CLUSTER_NAME} | jq -r .cluster.endpoint)
+update_kubeconfig(){
+    aws eks update-kubeconfig --name $CLUSTER_NAME --kubeconfig $KUBECONFIG
+}
 
-sed -i -e \
-"s#{CLUSTER_NAME}#${CLUSTER_NAME}#g; \
-s#{EKS_ENDPOINT}#${EKS_ENDPOINT}#g; \
-s#{CA_DATA}#${CA_DATA}#g;" \
-$KUBECONFIG
-
+update_kubeconfig
 exec "$@"
 
 

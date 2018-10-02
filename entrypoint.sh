@@ -1,10 +1,10 @@
 #!/bin/bash
-#set -x
+set -e
 
-export PATH=$PATH:/root/bin
+# export PATH=$PATH:/root/bin
+HOME=/home/kubectl
 
-KUBECONFIG=/root/.kube/kubeconfig
-export KUBECONFIG
+export KUBECONFIG=$HOME/.kube/kubeconfig
 
 start_dockerd() {
     /usr/bin/dockerd \
@@ -55,5 +55,3 @@ update_kubeconfig(){
 
 update_kubeconfig
 exec "$@"
-
-

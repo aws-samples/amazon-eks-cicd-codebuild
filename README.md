@@ -111,6 +111,8 @@ Make sure you flag **Privileged** in your CodeBuild Environment setting and spec
 # AWS Fargate Support
 TBD
 
+# AWS Fargate with CloudWatch Event scheduled events
+TBD
 
 # FAQ
 

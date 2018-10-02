@@ -108,6 +108,10 @@ Make sure you flag **Privileged** in your CodeBuild Environment setting and spec
 
 ![](images/07.png)
 
+# AWS Fargate Support
+TBD
+
+
 # FAQ
 
 Q: Do I need to specify **REGION**  in my CodeBuild environment variables?

@@ -13,7 +13,6 @@ RUN \
 	pip install awscli && \
 	apk --purge -v del py-pip && \
 	rm /var/cache/apk/* && \
-	\
 	# Create non-root user (with a randomly chosen UID/GUI).
 	adduser kubectl -Du 5566
 

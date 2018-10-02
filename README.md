@@ -5,7 +5,11 @@
 # Usage
 get all the pods from the cluster name `eksdemo`
 ```bash
-$ docker run -v $HOME/.aws:/home/kubectl/.aws -e REGION=us-west-2 -e CLUSTER_NAME=eksdemo1 -ti pahud/eks-kubectl-docker:latest kubectl get po 
+$ docker run -v $HOME/.aws:/home/kubectl/.aws \
+-e REGION=us-west-2 \
+-e CLUSTER_NAME=eksdemo1 \
+-ti pahud/eks-kubectl-docker:latest \
+kubectl get po 
 
 got region=us-west-2
 Added new context arn:aws:eks:us-west-2:{AWS_ID}:cluster/eksdemo1 to /home/kubectl/.kube/kubeconfig

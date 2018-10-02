@@ -5,4 +5,3 @@ services:
 
 script:
   - make build
-  - make build-v1

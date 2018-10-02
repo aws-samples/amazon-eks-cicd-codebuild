@@ -5,11 +5,15 @@
 # Usage
 get all the pods from the cluster name `eksdemo`
 ```bash
-docker run -v $HOME/.aws:/root/.aws \
--e REGION=us-west-2 \
--e CLUSTER_NAME=eksdemo \
--ti pahud/eks-kubectl-docker:latest \
-kubectl get po
+$ docker run -v $HOME/.aws:/home/kubectl/.aws -e REGION=us-west-2 -e CLUSTER_NAME=eksdemo1 -ti pahud/eks-kubectl-docker:latest kubectl get po 
+
+got region=us-west-2
+Added new context arn:aws:eks:us-west-2:{AWS_ID}:cluster/eksdemo1 to /home/kubectl/.kube/kubeconfig
+NAME                        READY     STATUS    RESTARTS   AGE
+greeting-58cb8c7dfc-j5dqq   1/1       Running   0          3d
+greeting-58cb8c7dfc-nvfcd   1/1       Running   0          3d
+nginx-7d86684c7c-jwqrt      1/1       Running   0          3d
+nginx-7d86684c7c-z99sk      1/1       Running   0          3d
 ```
 
 
@@ -33,12 +37,6 @@ Create an IAM Role for CodeBuild with a custom policies
             "Effect": "Allow",
             "Action": "eks:DescribeCluster",
             "Resource": "arn:aws:eks:*:*:cluster/*"
-        },
-        {
-            "Sid": "VisualEditor1",
-            "Effect": "Allow",
-            "Action": "eks:ListClusters",
-            "Resource": "*"
         }
     ]
 }

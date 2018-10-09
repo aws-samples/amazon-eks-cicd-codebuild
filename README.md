@@ -120,6 +120,9 @@ TBD
 # AWS Fargate with CloudWatch Event scheduled events
 TBD
 
+# Automated Amazon EKS provisioning and validation with CodeBuild
+You can automate the Amazon EKS workload provisioning and service state validation by CodeBuild or triggered by Cloudwatch Events periodically or triggered by Github push/PR.Check this sample `buildspec.yaml` that create a fresh new Amazon EKS cluster to validate the `aws-vpc-cni` driver version and eventually delete the cluster.
+
 # FAQ
 
 Q: Do I need to specify **REGION**  in my CodeBuild environment variables?

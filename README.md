@@ -1,4 +1,4 @@
-![](https://codebuild.us-west-2.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiQStpdGJMVDZ6b3BWODRiOGYvanJhTFhsNnZCVnExS1VxcnRManFSeWNjVndrVGRpV1g0QktxNWZONXZsU05WL3luU1ZQbC9jdnh4TWFKbXJ3emQ2Z1BFPSIsIml2UGFyYW1ldGVyU3BlYyI6IjNmUk00TERiZGlDNisvOEsiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
+![](https://codebuild.us-west-2.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiVW85THhEZXRnd3FxUmM5QnRaS1cyYjNFUktvVkFJSkVONlpEZGV2WHg5ZzRiNjdqRUIrVFBmWWdacXdZYll3TzU5N3NxR1h3MDRPZ0YwajhUT3gzbnI0PSIsIml2UGFyYW1ldGVyU3BlYyI6ImpqN0w4MTc1TmozVmI4c24iLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
 [![Build Status](https://travis-ci.org/pahud/eks-kubectl-docker.svg?branch=master)](https://travis-ci.org/pahud/eks-kubectl-docker)
 [![GitHub release](https://img.shields.io/github/release/pahud/eks-kubectl-docker.svg?style=plastic)](https://github.com/pahud/eks-kubectl-docker/releases)
 ![docker image size](https://shields.beevelop.com/docker/image/image-size/pahud/eks-kubectl-docker/latest.svg?style=plastic)

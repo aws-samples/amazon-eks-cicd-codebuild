@@ -1,0 +1,54 @@
+version: 0.2
+
+env:
+  variables:
+     KUBECONFIG: "/root/.kube/kubeconfig"
+     # key: "value"
+  #parameter-store:
+     # key: "value"
+     # key: "value"
+
+phases:
+  #install:
+    #commands:
+      # - command
+      # - command
+    #finally:
+      # - command
+      # - command
+  pre_build:
+    commands:
+       - /root/bin/entrypoint.sh
+      # - command
+    #finally:
+      # - command
+      # - command
+  build:
+    commands:
+        - cd codebuild
+        - REPO_NAME='eks-cicd-demo'
+        - IMAGE_TAG=$(./get_image_tag_by_hash.sh ${REPO_NAME})
+        - AWS_ACCOUNT_ID=$(echo $CODEBUILD_BUILD_ARN | cut -d: -f5)
+        - AWS_REGION=$(echo $CODEBUILD_BUILD_ARN | cut -d: -f4)
+        - IMAGE_FULL_PATH="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${REPO_NAME}:${IMAGE_TAG}"
+    #finally:
+      # - command
+      # - command
+  post_build:
+    commands:
+      - echo "updating image..."
+      - kubectl set image deployment/nginx-codebuild nginx-codebuild="${IMAGE_FULL_PATH}"
+    #finally:
+      # - command
+      # - command
+#artifacts:
+  #files:
+    # - location
+    # - location
+    # - name
+  #discard-paths: yes
+  #base-directory: location
+#cache:
+  #paths:
+    # - path
+    # - path

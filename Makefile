@@ -8,10 +8,10 @@ ifdef EKS_ROLE_ARN
 	EXTRA_DOCKER_ARGS = -e EKS_ROLE_ARN=$(EKS_ROLE_ARN)
 endif
 
-.PHONY: all build push
 
 TAG	?= $(REPO):$(TAG_VER)
 
+.PHONY: all build push build-latest push-latest get-nodes
 all: build
 
 build:

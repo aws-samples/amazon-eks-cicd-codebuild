@@ -7,7 +7,7 @@
 
 
 # eks-kubectl-docker
-**eks-kubectl-docker** is a docker image with `kubectl` and `aws-iam-authenticator` built in the image.
+**eks-kubectl-docker** is a docker image with `kubectl` CLI and Amazon EKS authentication support that helps you directly interact with Amazon EKS control plane in a Docker image. You may run it locally or in any managed container services such as `AWS Fargate` or `AWS CodeBuild`.
 
 # Usage
 

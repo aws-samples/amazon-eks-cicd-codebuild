@@ -20,6 +20,12 @@ build:
 push:
 	@docker push $(TAG)
 	
+build-latest:
+	@docker build -t  $(REPO):latest .
+	
+push-latest:
+	@docker push $(REPO):latest
+	
 get-nodes:
 	@docker run -v $(HOME)/.aws:/home/kubectl/.aws \
 -e REGION=$(REGION) \

@@ -17,13 +17,12 @@ RUN \
 	adduser kubectl -Du 5566
 
 ADD https://amazon-eks.s3-us-west-2.amazonaws.com/1.12.7/2019-03-27/bin/linux/amd64/kubectl /usr/local/bin/kubectl
-ADD https://amazon-eks.s3-us-west-2.amazonaws.com/1.12.7/2019-03-27/bin/linux/amd64/aws-iam-authenticator /usr/local/bin/aws-iam-authenticator
 
 WORKDIR $HOME
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 
-RUN chmod a+x /usr/local/bin/kubectl /usr/local/bin/aws-iam-authenticator /usr/local/bin/entrypoint.sh
+RUN chmod a+x /usr/local/bin/kubectl /usr/local/bin/entrypoint.sh
 
 
 # USER kubectl

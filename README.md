@@ -10,21 +10,33 @@
 **eks-kubectl-docker** is a docker image with `kubectl` and `aws-iam-authenticator` built in the image.
 
 # Usage
-get all the pods from the cluster name `eksdemo`
+
 ```bash
+# get pod list from eksdemo1 cluster
 $ docker run -v $HOME/.aws:/home/kubectl/.aws \
--e REGION=us-west-2 \
+-e AWS_REGION=us-west-2 \
 -e CLUSTER_NAME=eksdemo1 \
 -ti pahud/eks-kubectl-docker:latest \
 kubectl get po 
 
-got region=us-west-2
+[INFO] region=us-west-2
 Added new context arn:aws:eks:us-west-2:{AWS_ID}:cluster/eksdemo1 to /home/kubectl/.kube/kubeconfig
 NAME                        READY     STATUS    RESTARTS   AGE
 greeting-58cb8c7dfc-j5dqq   1/1       Running   0          3d
 greeting-58cb8c7dfc-nvfcd   1/1       Running   0          3d
 nginx-7d86684c7c-jwqrt      1/1       Running   0          3d
 nginx-7d86684c7c-z99sk      1/1       Running   0          3d
+
+# or just make get-nodes to get the node list
+# edit the Makefile before you run the make command
+# you may optionally specify a --role-arn in the Makefile
+$ make get-nodes
+[INFO] region=us-west-2
+[INFO] got EKS_ROLE_ARN=arn:aws:iam::{AWS_ID}:role/AmazonEKSAdminRole, updating kubeconfig with this role
+Added new context arn:aws:eks:us-west-2:{AWS_ID}:cluster/eksdemo3 to /home/kubectl/.kube/kubeconfig
+NAME                                           STATUS   ROLES    AGE   VERSION
+ip-100-64-126-218.us-west-2.compute.internal   Ready    <none>   19h   v1.12.7
+ip-100-64-173-2.us-west-2.compute.internal     Ready    <none>   19h   v1.12.7
 ```
 
 

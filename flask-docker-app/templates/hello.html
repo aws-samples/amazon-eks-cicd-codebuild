@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Simple Flask App</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="static/css/bootstrap.min.css" rel="stylesheet">
+        <style>body {margin-top: 40px; background-color: #333;}</style>
+        <link href="static/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="hero-unit">
+                <h1>{{ name }}</h1>
+                <h2>Congratulations</h2>
+                <p>Your Flask application is now running on a container in <b>{{ platform }}</b></p>
+                <p>The container is running <a href="{{ flask_url }}">Flask</a> version {{ flask_version }} and Python {{ python_version }}</p>
+                

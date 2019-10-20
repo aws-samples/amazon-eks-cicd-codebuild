@@ -84,3 +84,13 @@ On build complete, reload the browser and see the **Flask-demo** homepage again.
 
 ![](images/flask02.png)
 
+
+
+You may edit the [Dockerfile](https://github.com/pahud/eks-cicd-codebuild/blob/082d418aab1e2c65726d8980c46a8e336e8ed1b9/flask-docker-app/Dockerfile#L8) in **flask-dockder-app** directory and specify different **PLATFORM** value
+
+```
+ENV PLATFORM 'Amazon EKS'
+```
+
+After you **git add**, **git commit** and **git push** to the **CodeCommit** source repository, **CodeBuild** will rebuild the docker image with new tag, push to Amazon ECR and immediately update the kubernetes deployment again. You may reload the browser to see the changes. 
+

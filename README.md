@@ -98,7 +98,7 @@ After you **git add**, **git commit** and **git push** to the **CodeCommit** sou
 
 # FAQ
 
-Q:  when I `cdk deploy`, I got can't find **DEFAULT_REGION** or **DEFAULT_ACCOUNT** error.
+Q:  when I `cdk deploy`, I got can't find **CDK_DEFAULT_REGION** or **CDK_DEFAULT_ACCOUNT** error.
 
 A: You need configure your CDK environment, check [this chapter](https://docs.aws.amazon.com/en_us/cdk/latest/guide/environments.html) in AWS CDK Developer Guide to configure your Environment correctly.
 

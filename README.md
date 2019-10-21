@@ -94,3 +94,32 @@ ENV PLATFORM 'Amazon EKS'
 
 After you **git add**, **git commit** and **git push** to the **CodeCommit** source repository, **CodeBuild** will rebuild the docker image with new tag, push to Amazon ECR and immediately update the kubernetes deployment again. You may reload the browser to see the changes. 
 
+
+
+# FAQ
+
+Q:  when I `cdk deploy`, I got can't find **DEFAULT_REGION** or **DEFAULT_ACCOUNT** error.
+
+A: You need configure your CDK environment, check [this chapter](https://docs.aws.amazon.com/en_us/cdk/latest/guide/environments.html) in AWS CDK Developer Guide to configure your Environment correctly.
+
+
+
+Q: How can I create a new VPC rather than using the default VPC.
+A:
+
+```js
+const vpc = new ec2.Vpc(this, 'NewVPC', {
+  cidr: '10.0.0.0/16',
+  natGateways: 1
+})
+```
+
+
+
+Q: Got **VPC is not symmetric error** for default VPC
+A: The **ec2.Vpc.fromLooku()** assumes the VPC specified is symmetric, check the [doc](https://docs.aws.amazon.com/cdk/api/latest/docs/aws-ec2-readme.html) here. If you specify the default VPC and get this error, you probably need to check if you have public and private subnets in every AZ and make sure they are symmetric. (Ref: [aws/aws-cdk/issues/3407](https://github.com/aws/aws-cdk/issues/3407))
+
+
+
+Q: Can I build this with my existing Amazon EKS cluster?
+A: Yes. You can import the existing Amazon EKS cluster with **eks.Cluster.fromClusterAttributes()**

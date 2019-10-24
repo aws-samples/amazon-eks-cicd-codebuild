@@ -126,3 +126,8 @@ A: The **ec2.Vpc.fromLooku()** assumes the VPC specified is symmetric, check the
 Q: Can I build this with my existing Amazon EKS cluster?
 
 A: Yes. You can import the existing Amazon EKS cluster with **eks.Cluster.fromClusterAttributes()**
+
+
+## License
+
+This library is licensed under the MIT-0 License. See the LICENSE file.

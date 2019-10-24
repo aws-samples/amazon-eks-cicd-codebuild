@@ -9,7 +9,7 @@ This project helps you build a complete Amazon EKS cluster with nodegroup and CI
 This stack provisions the following resources with **AWS CDK**
 
 - [x] **Amazon EKS cluster**
-- [x] **Amazon EKS nodegroup**
+- [x] **Amazon EKS nodegroup (with 2 m5.large workers)**
 - [x] **AWS CodeBuild Project for Amazon EKS CI/CD**
 - [x] **AWS CodeCommit as a sample source repo**
 - [x] **Amazon ECR repository**
@@ -20,13 +20,27 @@ Just deploy the stack with AWS CDK
 
 ```bash
 $ git clone https://github.com/aws-samples/amazon-eks-cicd-codebuild.git
-$ cd cdk
+$ cd amazon-eks-cicd-codebuild/cdk
+# use cdk init and default all answers (to create a package.json file)
+$ cdk init
 # install required packages defined in package.json
 $ npm i
+# this requires an existing default vpc with private subnets already defined,
+# to create a new vpc (with the subnets needed) edit lib/cdk-stack.ts and replace the const vpc entry with the following
+```
+const vpc = new ec2.Vpc(this, 'NewVPC', {
+  cidr: '10.0.0.0/16',
+  natGateways: 1
+})
+```
 # compile typescript to js
 $ npm run build 
+# if you have not used cdk in this account previously you may be advised to create the necessary resources in the account
+$ cdk bootstrap aws://ACCOUNTNUMBER/us-east-1
 # deploy the complete stack
 $ cdk deploy
+# when finished with the demo delete the created resources
+$ cdk destroy
 ```
 
 ## Walkthrough

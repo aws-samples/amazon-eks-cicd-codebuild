@@ -4,7 +4,7 @@ This project helps you build a complete Amazon EKS cluster with nodegroup and CI
 
 ![](images/eks-cicd-codebuild.png)
 
-# Resource List
+## Resource List
 
 This stack provisions the following resources with **AWS CDK**
 
@@ -14,9 +14,7 @@ This stack provisions the following resources with **AWS CDK**
 - [x] **AWS CodeCommit as a sample source repo**
 - [x] **Amazon ECR repository**
 
-
-
-# Usage
+## Usage
 
 Just deploy the stack with AWS CDK
 
@@ -31,9 +29,7 @@ $ npm run build
 $ cdk deploy
 ```
 
-
-
-# Walkthrough
+## Walkthrough
 
 When you complete the `cdk deploy`, an empty **CodeCommit** repository will be created(check `Resource List` above to see all resource being created)
 
@@ -67,8 +63,6 @@ You will see the **Flask-demo** homepage.
 
 ![](images/flask01.png)
 
-
-
 ```bash
 # copy the ELB dns name from the EXTERNAL-IP column and open it in browser.
 # You will see the Flask-demo homepage
@@ -77,14 +71,11 @@ $ git remote add codecommit ssh://git-codecommit.us-west-2.amazonaws.com/v1/repo
 # push all current repo to codecommit. This will trigger CodeBuild for CI/CD.
 $ git push -u codecommit master
 ```
-
 Check the **CodeBuild** console to see the build status.
 
 On build complete, reload the browser and see the **Flask-demo** homepage again. You will see the running platform string has changed from **Amazon Web Services** to **Amazon EKS**.
 
 ![](images/flask02.png)
-
-
 
 You may edit the [Dockerfile](https://github.com/pahud/eks-cicd-codebuild/blob/082d418aab1e2c65726d8980c46a8e336e8ed1b9/flask-docker-app/Dockerfile#L8) in **flask-dockder-app** directory and specify different **PLATFORM** value
 
@@ -94,14 +85,11 @@ ENV PLATFORM 'Amazon EKS'
 
 After you **git add**, **git commit** and **git push** to the **CodeCommit** source repository, **CodeBuild** will rebuild the docker image with new tag, push to Amazon ECR and immediately update the kubernetes deployment again. You may reload the browser to see the changes. 
 
-
-
-# FAQ
+## FAQ
 
 Q:  when I `cdk deploy`, I got can't find **CDK_DEFAULT_REGION** or **CDK_DEFAULT_ACCOUNT** error.
 
 A: You need configure your CDK environment, check [this chapter](https://docs.aws.amazon.com/en_us/cdk/latest/guide/environments.html) in AWS CDK Developer Guide to configure your Environment correctly.
-
 
 
 Q: How can I create a new VPC rather than using the default VPC.
@@ -115,18 +103,14 @@ const vpc = new ec2.Vpc(this, 'NewVPC', {
 })
 ```
 
-
-
 Q: Got **VPC is not symmetric error** for default VPC
 
 A: The **ec2.Vpc.fromLooku()** assumes the VPC specified is symmetric, check the [doc](https://docs.aws.amazon.com/cdk/api/latest/docs/aws-ec2-readme.html) here. If you specify the default VPC and get this error, you probably need to check if you have public and private subnets in every AZ and make sure they are symmetric. (Ref: [aws/aws-cdk/issues/3407](https://github.com/aws/aws-cdk/issues/3407))
 
 
-
 Q: Can I build this with my existing Amazon EKS cluster?
 
 A: Yes. You can import the existing Amazon EKS cluster with **eks.Cluster.fromClusterAttributes()**
-
 
 ## License
 

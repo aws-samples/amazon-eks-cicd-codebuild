@@ -78,7 +78,7 @@ On build complete, reload the browser and see the **Flask-demo** homepage again.
 
 ![](images/flask02.png)
 
-You may edit the [Dockerfile](https://github.com/pahud/eks-cicd-codebuild/blob/082d418aab1e2c65726d8980c46a8e336e8ed1b9/flask-docker-app/Dockerfile#L8) in **flask-dockder-app** directory and specify different **PLATFORM** value
+You may edit the [Dockerfile](https://github.com/pahud/eks-cicd-codebuild/blob/082d418aab1e2c65726d8980c46a8e336e8ed1b9/flask-docker-app/Dockerfile#L8) in **flask-docker-app** directory and specify different **PLATFORM** value
 
 ```bash
 ENV PLATFORM 'Amazon EKS'
@@ -105,7 +105,7 @@ const vpc = new ec2.Vpc(this, 'NewVPC', {
 
 Q: Got **VPC is not symmetric error** for default VPC
 
-A: The **ec2.Vpc.fromLooku()** assumes the VPC specified is symmetric, check the [doc](https://docs.aws.amazon.com/cdk/api/latest/docs/aws-ec2-readme.html) here. If you specify the default VPC and get this error, you probably need to check if you have public and private subnets in every AZ and make sure they are symmetric. (Ref: [aws/aws-cdk/issues/3407](https://github.com/aws/aws-cdk/issues/3407))
+A: The **ec2.Vpc.fromLookup()** assumes the VPC specified is symmetric, check the [doc](https://docs.aws.amazon.com/cdk/api/latest/docs/aws-ec2-readme.html) here. If you specify the default VPC and get this error, you probably need to check if you have public and private subnets in every AZ and make sure they are symmetric. (Ref: [aws/aws-cdk/issues/3407](https://github.com/aws/aws-cdk/issues/3407))
 
 Q: Can I build this with my existing Amazon EKS cluster?
 

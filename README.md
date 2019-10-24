@@ -27,12 +27,12 @@ $ cdk init
 $ npm i
 # this requires an existing default vpc with private subnets already defined,
 # to create a new vpc (with the subnets needed) edit lib/cdk-stack.ts and replace the const vpc entry with the following
-```
+
 const vpc = new ec2.Vpc(this, 'NewVPC', {
   cidr: '10.0.0.0/16',
   natGateways: 1
 })
-```
+
 # compile typescript to js
 $ npm run build 
 # if you have not used cdk in this account previously you may be advised to create the necessary resources in the account

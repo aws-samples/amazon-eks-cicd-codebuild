@@ -21,7 +21,7 @@ This stack provisions the following resources with **AWS CDK**
 Just deploy the stack with AWS CDK
 
 ```bash
-$ git clone https://github.com/pahud/eks-cicd-codebuild.git
+$ git clone https://github.com/aws-samples/amazon-eks-cicd-codebuild.git
 $ cd cdk
 # install required packages defined in package.json
 $ npm i

@@ -40,6 +40,8 @@ $ cdk bootstrap aws://ACCOUNTNUMBER/us-east-1
 # deploy the complete stack
 $ cdk deploy
 # when finished with the demo delete the created resources
+# note that the flask resources were created independently of the cdk and must be deleted first
+$ kubectl delete svc/flask-svc deploy/flask
 $ cdk destroy
 ```
 
@@ -66,7 +68,7 @@ $ aws eks update-kubeconfig --name cluster-e262edb4-e3f4-4384-82f3-366ea3b341de 
 # list the nodes with kubectl
 $ kubectl get no
 # deploy the initial flask sample service
-$ kubectl apply -f flask-docker-app/k8s/flask.yaml
+$ kubectl apply -f ../flask-docker-app/k8s/flask.yaml
 # list the service and deployment
 $ kubectl get svc,deploy
 ```
@@ -124,6 +126,10 @@ A: The **ec2.Vpc.fromLookup()** assumes the VPC specified is symmetric, check th
 Q: Can I build this with my existing Amazon EKS cluster?
 
 A: Yes. You can import the existing Amazon EKS cluster with **eks.Cluster.fromClusterAttributes()**
+
+Q: The *cdk destroy* fails due to dependencies that cannot be deleted
+
+A: The flask app dependencies must be deleted with kubectl before the *cdk destroy*
 
 ## License
 

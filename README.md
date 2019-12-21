@@ -14,15 +14,21 @@ This stack provisions the following resources with **AWS CDK**
 - [x] **AWS CodeCommit as a sample source repo**
 - [x] **Amazon ECR repository**
 
+
+## Pre-requisities
+- [x] **AWS CDK >= 1.19.0** - check [Getting Started with AWS CDK](https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html) to setup your CDK environment. Run `cdk --version` to check the CLI version.
+- [x] **Docker** - AWS CDK will build a docker image from local for codebuild environment. Make sure you have installed docker in your client.
+
+
+
 ## Usage
 
 Just deploy the stack with AWS CDK
 
 ```bash
+# make sure you have installed AWS CDK >=1.19.0 (cdk --version)
 $ git clone https://github.com/aws-samples/amazon-eks-cicd-codebuild.git
 $ cd amazon-eks-cicd-codebuild/cdk
-# use cdk init and default all answers (to create a package.json file)
-$ cdk init
 # install required packages defined in package.json
 $ npm i
 # this requires an existing default vpc with private subnets already defined,

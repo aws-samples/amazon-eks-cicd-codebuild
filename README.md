@@ -18,11 +18,22 @@ This stack provisions the following resources with **AWS CDK**
 
 Just deploy the stack with AWS CDK
 
+Pre-requisites:
+ * Ensure CDK CLI version >= 1.16.0 (cdk --version)  
+   If not, upgrade using command: npm install -g aws-cdk
+
+ * Ensure Typescript version >= 3.7.3 (tsc -v)
+   If not, upgrade using command: sudo npm install -g typescript@latest
+   Note down the new version of TypeScript as that will need to be updated in package.json file as mentioned below
+
+ * Ensure the region selected supports EKS. Otherwise the "cdk deploy" would fail with error message "UnauthorizedAccessException"
+
 ```bash
 $ git clone https://github.com/aws-samples/amazon-eks-cicd-codebuild.git
 $ cd amazon-eks-cicd-codebuild/cdk
 # use cdk init and default all answers (to create a package.json file)
 $ cdk init
+# update the package.json file with the new version of typescript as explained above
 # install required packages defined in package.json
 $ npm i
 # this requires an existing default vpc with private subnets already defined,

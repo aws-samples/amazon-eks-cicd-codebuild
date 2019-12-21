@@ -11,9 +11,20 @@ export class CdkStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
+    /**
+     * Uncomment below if you perfer using default VPC
+     */
     const vpc = ec2.Vpc.fromLookup(this, 'VPC', {
       isDefault: true
     })
+
+    /**
+     * Create a new VPC with single NAT Gateway
+     */
+    // const vpc = new ec2.Vpc(this, 'NewVPC', {
+    //   cidr: '10.0.0.0/16',
+    //   natGateways: 1
+    // })
 
     const clusterAdmin = new iam.Role(this, 'AdminRole', {
       assumedBy: new iam.AccountRootPrincipal()

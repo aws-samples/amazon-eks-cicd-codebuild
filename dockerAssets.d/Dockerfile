@@ -16,7 +16,7 @@ RUN \
 	# Create non-root user (with a randomly chosen UID/GUI).
 	adduser kubectl -Du 5566
 
-ADD https://amazon-eks.s3-us-west-2.amazonaws.com/1.14.6/2019-08-22/bin/linux/amd64/kubectl /usr/local/bin/kubectl
+ADD https://amazon-eks.s3.us-west-2.amazonaws.com/1.15.10/2020-02-22/bin/linux/amd64/kubectl /usr/local/bin/kubectl
 #COPY kubectl /usr/local/bin/kubectl
 
 WORKDIR $HOME

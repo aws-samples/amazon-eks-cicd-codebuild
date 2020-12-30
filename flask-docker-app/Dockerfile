@@ -1,10 +1,9 @@
-FROM alpine:3.8
-RUN apk add python3 py-pip && \
-python3 -m ensurepip && \
-pip install --upgrade pip && \
-pip install flask
+FROM python:3.7.4-alpine3.10
+
+RUN pip install flask
 
 ENV FLASK_APP app.py
+
 ENV PLATFORM 'Amazon EKS'
 
 WORKDIR /app

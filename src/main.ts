@@ -14,10 +14,6 @@ export class DemoStack extends cdk.Stack {
 
     const vpc = getOrCreateVpc(this);
 
-    // const clusterAdmin = new iam.Role(this, 'AdminRole', {
-    //   assumedBy: new iam.AccountRootPrincipal()
-    // });
-
     const cluster = new eks.Cluster(this, 'Cluster', {
       vpc,
       version: eks.KubernetesVersion.V1_18,
@@ -101,8 +97,6 @@ const devEnv = {
 const app = new cdk.App();
 
 new DemoStack(app, 'eks-cicd-codebuild-stack', { env: devEnv });
-
-app.synth();
 
 
 function getOrCreateVpc(scope: cdk.Construct): ec2.IVpc {

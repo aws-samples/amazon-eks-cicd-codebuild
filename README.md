@@ -16,7 +16,7 @@ This stack provisions the following resources with **AWS CDK**
 
 
 ## Pre-requisities
-- [x] **AWS CDK >= 1.19.0** - check [Getting Started with AWS CDK](https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html) to setup your CDK environment. Run `cdk --version` to check the CLI version.
+- [x] **AWS CDK >= 1.80.0** - check [Getting Started with AWS CDK](https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html) to setup your CDK environment. Run `cdk --version` to check the CLI version.
 - [x] **Docker** - AWS CDK will build a docker image from local for codebuild environment. Make sure you have installed docker in your client.
 
 
@@ -26,23 +26,14 @@ This stack provisions the following resources with **AWS CDK**
 Just deploy the stack with AWS CDK
 
 ```bash
-# make sure you have installed AWS CDK >=1.19.0 (cdk --version)
 $ git clone https://github.com/aws-samples/amazon-eks-cicd-codebuild.git
-$ cd amazon-eks-cicd-codebuild/cdk
+$ cd amazon-eks-cicd-codebuild
 # install required packages defined in package.json
 $ npm i
-# this requires an existing default vpc with private subnets already defined,
-# to create a new vpc (with the subnets needed) edit lib/cdk-stack.ts and replace the const vpc entry with the following
-
-const vpc = new ec2.Vpc(this, 'NewVPC', {
-  cidr: '10.0.0.0/16',
-  natGateways: 1
-})
-
-# compile typescript to js
-$ npm run build 
 # if you have not used cdk in this account previously you may be advised to create the necessary resources in the account
 $ cdk bootstrap aws://ACCOUNTNUMBER/us-east-1
+# check the diff before deployment
+$ cdk diff
 # deploy the complete stack
 $ cdk deploy
 # when finished with the demo delete the created resources
@@ -50,6 +41,10 @@ $ cdk deploy
 $ kubectl delete svc/flask-svc deploy/flask
 $ cdk destroy
 ```
+
+
+
+
 
 ## Walkthrough
 
@@ -114,16 +109,17 @@ Q:  when I `cdk deploy`, I got can't find **CDK_DEFAULT_REGION** or **CDK_DEFAUL
 
 A: You need configure your CDK environment, check [this chapter](https://docs.aws.amazon.com/en_us/cdk/latest/guide/environments.html) in AWS CDK Developer Guide to configure your Environment correctly.
 
-Q: How can I create a new VPC rather than using the default VPC.
+Q: How can I deploy to a default VPC or any existing one?
 
 A:
 
-```js
-const vpc = new ec2.Vpc(this, 'NewVPC', {
-  cidr: '10.0.0.0/16',
-  natGateways: 1
-})
+```bash
+# deploy to the default VPC
+$ cdk deploy -c use_default_vpc=1
+# Or to deploy to VPC ID vpc-xxxxxx
+$ cdk deploy -c use_vpc_id=vpc-xxxxxx
 ```
+(You are encouraged to run `cdk diff` with the -c to view the difference first.)
 
 However, if you create a new VPC, you might not be able to `cdk destroy` it after you `kubectl apply` some services in this VPC. Check [#5](https://github.com/aws-samples/amazon-eks-cicd-codebuild/issues/5) for more details and instructions.
 

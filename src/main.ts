@@ -50,6 +50,7 @@ export class DemoStack extends cdk.Stack {
             commands: [
               'env',
               'export TAG=${CODEBUILD_RESOLVED_SOURCE_VERSION}',
+              'export AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output=text)',
               '/usr/local/bin/entrypoint.sh',
               'echo Logging in to Amazon ECR',
               'aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com'
@@ -65,7 +66,7 @@ export class DemoStack extends cdk.Stack {
           post_build: {
             commands: [
               'kubectl get no',
-              'kubectl set image deployment flask flask=$ECR_REPO_URI:$TAG',
+              'kubectl set image deployment flask-deployment flask=$ECR_REPO_URI:$TAG',
             ],
           },
         },

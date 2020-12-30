@@ -41,8 +41,11 @@ else
     region=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq .region -r)
 fi
 
+accountId=$(aws sts get-caller-identity --query 'Account' --output=text)
+
 # export AWS_DEFAULT_REGION=${REGION-${CODEBUILD_AGENT_ENV_CODEBUILD_REGION-$region}}
 export AWS_DEFAULT_REGION=$region
+export AWS_ACCOUNT_ID=$accountId
 
 CLUSTER_NAME=${CLUSTER_NAME-default}
 

@@ -52,24 +52,23 @@ When you complete the `cdk deploy`, an empty **CodeCommit** repository will be c
 
 ```bash
 Outputs:
-CdkStack.ClusterClusterNameEB26049E = cluster-e262edb4-e3f4-4384-82f3-366ea3b341de
-CdkStack.ClusterConfigCommand43AAE40F = aws eks update-kubeconfig --name cluster-e262edb4-e3f4-4384-82f3-366ea3b341de --region us-west-2 --role-arn arn:aws:iam::112233445566:role/CdkStack-AdminRole38563C57-1US2EG9014AO1
-CdkStack.CodeCommitRepoArn = arn:aws:codecommit:us-west-2:112233445566:CdkStack-repo
-CdkStack.CodeCommitRepoName = CdkStack-repo
-CdkStack.ClusterGetTokenCommand06AE992E = aws eks get-token --cluster-name cluster-e262edb4-e3f4-4384-82f3-366ea3b341de --region us-west-2 --role-arn arn:aws:iam::112233445566:role/CdkStack-AdminRole38563C57-1US2EG9014AO1
-CdkStack.CodeCommitCloneUrlSsh = ssh://git-codecommit.us-west-2.amazonaws.com/v1/repos/CdkStack-repo
-CdkStack.CodeCommitCloneUrlHttp = https://git-codecommit.us-west-2.amazonaws.com/v1/repos/CdkStack-repo
+eks-cicd-codebuild-stack.ClusterConfigCommand43AAE40F = aws eks update-kubeconfig --name Cluster9EE0221C-96a69d282e344526afd711d2d3014150 --region ap-northeast-1 --role-arn arn:aws:iam::112233445566:role/eks-cicd-codebuild-stack-ClusterMastersRole9AA3562-1Q06U5NB9DP2Q
+eks-cicd-codebuild-stack.ClusterGetTokenCommand06AE992E = aws eks get-token --cluster-name Cluster9EE0221C-96a69d282e344526afd711d2d3014150 --region ap-northeast-1 --role-arn arn:aws:iam::112233445566:role/eks-cicd-codebuild-stack-ClusterMastersRole9AA3562-1Q06U5NB9DP2Q
+eks-cicd-codebuild-stack.CodeCommitCloneUrlHttp = https://git-codecommit.ap-northeast-1.amazonaws.com/v1/repos/eks-cicd-codebuild-stack-repo
+eks-cicd-codebuild-stack.CodeCommitCloneUrlSsh = ssh://git-codecommit.ap-northeast-1.amazonaws.com/v1/repos/eks-cicd-codebuild-stack-repo
+eks-cicd-codebuild-stack.CodeCommitRepoArn = arn:aws:codecommit:ap-northeast-1:112233445566:eks-cicd-codebuild-stack-repo
+eks-cicd-codebuild-stack.CodeCommitRepoName = eks-cicd-codebuild-stack-repo
 ```
 
 Verify the Amazon EKS is running **kubectl**
 
 ```bash
 # copy the 'aws eks update-kubeconfig' command string and run it in the terminal to generate/update the kubeconfig
-$ aws eks update-kubeconfig --name cluster-e262edb4-e3f4-4384-82f3-366ea3b341de --region us-west-2 --role-arn arn:aws:iam::112233445566:role/CdkStack-AdminRole38563C57-1US2EG9014AO1
+$ aws eks update-kubeconfig --name Cluster9EE0221C-96a69d282e344526afd711d2d3014150 --region ap-northeast-1 --role-arn arn:aws:iam::112233445566:role/eks-cicd-codebuild-stack-ClusterMastersRole9AA3562-1Q06U5NB9DP2Q
 # list the nodes with kubectl
 $ kubectl get no
 # deploy the initial flask sample service
-$ kubectl apply -f ../flask-docker-app/k8s/flask.yaml
+$ kubectl apply -f flask-docker-app/k8s/flask.yaml
 # list the service and deployment
 $ kubectl get svc,deploy
 ```
@@ -84,7 +83,7 @@ You will see the **Flask-demo** homepage.
 # copy the ELB dns name from the EXTERNAL-IP column and open it in browser.
 # You will see the Flask-demo homepage
 # set codecommit as another upstream 
-$ git remote add codecommit ssh://git-codecommit.us-west-2.amazonaws.com/v1/repos/CdkStack-repo
+$ git remote add codecommit ssh://git-codecommit.ap-northeast-1.amazonaws.com/v1/repos/eks-cicd-codebuild-stack-repo
 # push all current repo to codecommit. This will trigger CodeBuild for CI/CD.
 $ git push -u codecommit master
 ```
@@ -95,7 +94,7 @@ On build complete, reload the browser and see the **Flask-demo** homepage again.
 
 ![](images/flask02.png)
 
-You may edit the [Dockerfile](https://github.com/pahud/eks-cicd-codebuild/blob/082d418aab1e2c65726d8980c46a8e336e8ed1b9/flask-docker-app/Dockerfile#L8) in **flask-docker-app** directory and specify different **PLATFORM** value
+You may edit the `Dockerfile` in **flask-docker-app** directory and specify different **PLATFORM** value
 
 ```bash
 ENV PLATFORM 'Amazon EKS'

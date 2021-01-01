@@ -19,7 +19,7 @@ This stack provisions the following resources with **AWS CDK**
 - [x] **AWS CDK >= 1.80.0** - check [Getting Started with AWS CDK](https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html) to setup your CDK environment. Run `cdk --version` to check the CLI version.
 - [x] **Docker** - AWS CDK will build a docker image from local for codebuild environment. Make sure you have installed docker in your client.
 
-
+> **Note:** Due to a known issue with the EKS module in CDK version `1.81.0`, the project currently only works with version `1.80.0`. See https://github.com/aws/aws-cdk/issues/12291 for possible workarounds if you require version `1.81.0`.
 
 ## Usage
 
@@ -82,7 +82,7 @@ You will see the **Flask-demo** homepage.
 ```bash
 # copy the ELB dns name from the EXTERNAL-IP column and open it in browser.
 # You will see the Flask-demo homepage
-# set codecommit as another upstream 
+# set codecommit as another upstream
 $ git remote add codecommit ssh://git-codecommit.ap-northeast-1.amazonaws.com/v1/repos/eks-cicd-codebuild-stack-repo
 # push all current repo to codecommit. This will trigger CodeBuild for CI/CD.
 $ git push -u codecommit master
@@ -100,7 +100,7 @@ You may edit the `Dockerfile` in **flask-docker-app** directory and specify diff
 ENV PLATFORM 'Amazon EKS'
 ```
 
-After you **git add**, **git commit** and **git push** to the **CodeCommit** source repository, **CodeBuild** will rebuild the docker image with new tag, push to Amazon ECR and immediately update the kubernetes deployment again. You may reload the browser to see the changes. 
+After you **git add**, **git commit** and **git push** to the **CodeCommit** source repository, **CodeBuild** will rebuild the docker image with new tag, push to Amazon ECR and immediately update the kubernetes deployment again. You may reload the browser to see the changes.
 
 ## FAQ
 

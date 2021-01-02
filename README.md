@@ -28,8 +28,8 @@ Just deploy the stack with AWS CDK
 ```bash
 $ git clone https://github.com/aws-samples/amazon-eks-cicd-codebuild.git
 $ cd amazon-eks-cicd-codebuild
-# install required packages defined in package.json
-$ npm i
+# install required packages
+$ yarn install
 # if you have not used cdk in this account previously you may be advised to create the necessary resources in the account
 $ cdk bootstrap aws://ACCOUNTNUMBER/us-east-1
 # check the diff before deployment

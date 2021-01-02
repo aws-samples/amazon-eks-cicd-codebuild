@@ -5,6 +5,7 @@ const AUTOMATION_TOKEN = 'GITHUB_TOKEN';
 
 const project = new AwsCdkTypeScriptApp({
   cdkVersion: '1.80.0',
+  cdkVersionPinning: true,
   name: 'eks-cicd-codebuild',
   cdkDependencies: [
     '@aws-cdk/aws-ec2',

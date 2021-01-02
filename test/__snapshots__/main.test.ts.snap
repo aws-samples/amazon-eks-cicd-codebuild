@@ -802,7 +802,7 @@ Object {
                 Object {
                   "Ref": "AWS::URLSuffix",
                 },
-                "/aws-cdk/assets:fead26c1e8757e3bc9d141500207a35edca6c47638bf954f82a87cb4f3714b30",
+                "/aws-cdk/assets:0f5a038bc8ace2b9ad20c6be44ba51297cf5ee432dcf2113ca59f9272463fecb",
               ],
             ],
           },
@@ -825,21 +825,23 @@ Object {
       \\"commands\\": [
         \\"env\\",
         \\"export TAG=\${CODEBUILD_RESOLVED_SOURCE_VERSION}\\",
-        \\"/usr/local/bin/entrypoint.sh\\"
+        \\"export AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output=text)\\",
+        \\"/usr/local/bin/entrypoint.sh\\",
+        \\"echo Logging in to Amazon ECR\\",
+        \\"aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com\\"
       ]
     },
     \\"build\\": {
       \\"commands\\": [
         \\"cd flask-docker-app\\",
         \\"docker build -t $ECR_REPO_URI:$TAG .\\",
-        \\"$(aws ecr get-login --no-include-email)\\",
         \\"docker push $ECR_REPO_URI:$TAG\\"
       ]
     },
     \\"post_build\\": {
       \\"commands\\": [
         \\"kubectl get no\\",
-        \\"kubectl set image deployment flask flask=$ECR_REPO_URI:$TAG\\"
+        \\"kubectl set image deployment flask-deployment flask=$ECR_REPO_URI:$TAG\\"
       ]
     }
   }

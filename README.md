@@ -16,10 +16,9 @@ This stack provisions the following resources with **AWS CDK**
 
 
 ## Pre-requisities
-- [x] **AWS CDK >= 1.80.0** - check [Getting Started with AWS CDK](https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html) to setup your CDK environment. Run `cdk --version` to check the CLI version.
+- [x] **AWS CDK >= 1.82.0** - check [Getting Started with AWS CDK](https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html) to setup your CDK environment. Run `cdk --version` to check the CLI version.
 - [x] **Docker** - AWS CDK will build a docker image from local for codebuild environment. Make sure you have installed docker in your client.
 
-> **Note:** Due to a known issue with the EKS module in CDK version `1.81.0`, the project currently only works with version `1.80.0`. See https://github.com/aws/aws-cdk/issues/12291 for possible workarounds if you require version `1.81.0`.
 
 ## Usage
 

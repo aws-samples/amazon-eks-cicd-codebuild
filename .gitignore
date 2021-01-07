@@ -47,12 +47,11 @@ jspm_packages/
 /test-reports/
 junit.xml
 /coverage
+!/test
 !/.github/workflows/build.yml
 !/.mergify.yml
-!/.github/dependabot.yml
 !/.github/pull_request_template.md
 !/.github/workflows/rebuild-bot.yml
-!/test
 !/tsconfig.json
 /lib
 !/src

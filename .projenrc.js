@@ -1,6 +1,6 @@
 const { AwsCdkTypeScriptApp } = require('projen');
 
-const AUTOMATION_TOKEN = 'GITHUB_TOKEN';
+const AUTOMATION_TOKEN = 'PROJEN_GITHUB_TOKEN';
 
 const project = new AwsCdkTypeScriptApp({
   cdkVersion: '1.82.0',
@@ -14,7 +14,7 @@ const project = new AwsCdkTypeScriptApp({
     '@aws-cdk/aws-codecommit',
     '@aws-cdk/aws-events-targets',
   ],
-
+  dependabot: false,
 });
 
 // create a custom projen and yarn upgrade workflow

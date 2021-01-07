@@ -6,8 +6,8 @@
 /test-reports/
 junit.xml
 /coverage
-/.mergify.yml
 /test
+/.mergify.yml
 /tsconfig.json
 !/lib
 /src

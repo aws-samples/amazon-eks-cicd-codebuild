@@ -33,7 +33,7 @@
     "jest": "^26.6.3",
     "jest-junit": "^12",
     "json-schema": "^0.2.5",
-    "projen": "^0.12.15",
+    "projen": "^0.14.3",
     "standard-version": "^9.0.0",
     "ts-jest": "^26.4.4",
     "ts-node": "^9.1.1",
@@ -54,8 +54,18 @@
   "license": "Apache-2.0",
   "version": "0.0.0",
   "jest": {
+    "testMatch": [
+      "**/__tests__/**/*.ts?(x)",
+      "**/?(*.)+(spec|test).ts?(x)"
+    ],
     "clearMocks": true,
     "collectCoverage": true,
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "clover",
+      "text"
+    ],
     "coverageDirectory": "coverage",
     "coveragePathIgnorePatterns": [
       "/node_modules/"
@@ -63,9 +73,8 @@
     "testPathIgnorePatterns": [
       "/node_modules/"
     ],
-    "testMatch": [
-      "**/__tests__/**/*.ts?(x)",
-      "**/?(*.)+(spec|test).ts?(x)"
+    "watchPathIgnorePatterns": [
+      "/node_modules/"
     ],
     "reporters": [
       "default",

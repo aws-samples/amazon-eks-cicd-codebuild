@@ -15,6 +15,7 @@ const project = new AwsCdkTypeScriptApp({
     '@aws-cdk/aws-events-targets',
   ],
   dependabot: false,
+  defaultReleaseBranch: ['master'],
 });
 
 // create a custom projen and yarn upgrade workflow

@@ -17,6 +17,7 @@ const project = new AwsCdkTypeScriptApp({
   ],
   dependabot: false,
   deps: ['projen-automate-it'],
+  defaultReleaseBranch: 'master',
 });
 
 const automation = new Automation(project, { automationToken: AUTOMATION_TOKEN });

@@ -55,7 +55,7 @@
     },
     {
       "name": "projen",
-      "version": "^0.16.2",
+      "version": "^0.12.15",
       "type": "build"
     },
     {
@@ -119,6 +119,10 @@
     {
       "name": "@aws-cdk/core",
       "version": "^1.82.0",
+      "type": "runtime"
+    },
+    {
+      "name": "projen-automate-it",
       "type": "runtime"
     }
   ],

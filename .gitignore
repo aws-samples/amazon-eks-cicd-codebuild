@@ -62,7 +62,10 @@ cdk.out/
 .cdk.staging/
 .parcel-cache/
 !/cdk.json
+!/.github/workflows/autoapprove.yml
+!/.github/workflows/automerge.yml
 !/.github/workflows/projenyarnupgrade.yml
+!/.github/workflows/projenyarnupgradewithtest.yml
 cdk.out
 cdk.context.json
 dockerAssets.d

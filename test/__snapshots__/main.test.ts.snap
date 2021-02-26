@@ -85,6 +85,18 @@ Object {
     },
   },
   "Parameters": Object {
+    "AssetParameters0ba1d27f69bdaacb759545685f6f19a8b80634af584731cf88ef3f27909384edArtifactHashC707CC68": Object {
+      "Description": "Artifact hash for asset \\"0ba1d27f69bdaacb759545685f6f19a8b80634af584731cf88ef3f27909384ed\\"",
+      "Type": "String",
+    },
+    "AssetParameters0ba1d27f69bdaacb759545685f6f19a8b80634af584731cf88ef3f27909384edS3Bucket93A61513": Object {
+      "Description": "S3 bucket for asset \\"0ba1d27f69bdaacb759545685f6f19a8b80634af584731cf88ef3f27909384ed\\"",
+      "Type": "String",
+    },
+    "AssetParameters0ba1d27f69bdaacb759545685f6f19a8b80634af584731cf88ef3f27909384edS3VersionKey6D7EFA39": Object {
+      "Description": "S3 key for asset version \\"0ba1d27f69bdaacb759545685f6f19a8b80634af584731cf88ef3f27909384ed\\"",
+      "Type": "String",
+    },
     "AssetParameters50e10880d134a01b440991fc77d217f39f01c2d56945215ee9a3b81187c6f3b1ArtifactHash32F5D823": Object {
       "Description": "Artifact hash for asset \\"50e10880d134a01b440991fc77d217f39f01c2d56945215ee9a3b81187c6f3b1\\"",
       "Type": "String",
@@ -155,18 +167,6 @@ Object {
     },
     "AssetParameterse9882ab123687399f934da0d45effe675ecc8ce13b40cb946f3e1d6141fe8d68S3VersionKeyE415415F": Object {
       "Description": "S3 key for asset version \\"e9882ab123687399f934da0d45effe675ecc8ce13b40cb946f3e1d6141fe8d68\\"",
-      "Type": "String",
-    },
-    "AssetParametersfb4a4d5e07aea968c0661e4759266d4ce48e5cb15eb4cf01a98c9743e173e3a8ArtifactHash33D5EB05": Object {
-      "Description": "Artifact hash for asset \\"fb4a4d5e07aea968c0661e4759266d4ce48e5cb15eb4cf01a98c9743e173e3a8\\"",
-      "Type": "String",
-    },
-    "AssetParametersfb4a4d5e07aea968c0661e4759266d4ce48e5cb15eb4cf01a98c9743e173e3a8S3Bucket64D7DA01": Object {
-      "Description": "S3 bucket for asset \\"fb4a4d5e07aea968c0661e4759266d4ce48e5cb15eb4cf01a98c9743e173e3a8\\"",
-      "Type": "String",
-    },
-    "AssetParametersfb4a4d5e07aea968c0661e4759266d4ce48e5cb15eb4cf01a98c9743e173e3a8S3VersionKeyDAA66008": Object {
-      "Description": "S3 key for asset version \\"fb4a4d5e07aea968c0661e4759266d4ce48e5cb15eb4cf01a98c9743e173e3a8\\"",
       "Type": "String",
     },
   },
@@ -431,14 +431,6 @@ Object {
             },
             Object {
               "Action": Array [
-                "ec2:DescribeSubnets",
-                "ec2:DescribeRouteTables",
-              ],
-              "Effect": "Allow",
-              "Resource": "*",
-            },
-            Object {
-              "Action": Array [
                 "eks:CreateCluster",
                 "eks:DescribeCluster",
                 "eks:DescribeUpdate",
@@ -476,31 +468,17 @@ Object {
               "Resource": "*",
             },
             Object {
-              "Action": "ec2:DescribeVpcs",
+              "Action": Array [
+                "ec2:DescribeInstances",
+                "ec2:DescribeNetworkInterfaces",
+                "ec2:DescribeSecurityGroups",
+                "ec2:DescribeSubnets",
+                "ec2:DescribeRouteTables",
+                "ec2:DescribeDhcpOptions",
+                "ec2:DescribeVpcs",
+              ],
               "Effect": "Allow",
-              "Resource": Object {
-                "Fn::Join": Array [
-                  "",
-                  Array [
-                    "arn:",
-                    Object {
-                      "Ref": "AWS::Partition",
-                    },
-                    ":ec2:",
-                    Object {
-                      "Ref": "AWS::Region",
-                    },
-                    ":",
-                    Object {
-                      "Ref": "AWS::AccountId",
-                    },
-                    ":vpc/",
-                    Object {
-                      "Ref": "Vpc8378EB38",
-                    },
-                  ],
-                ],
-              },
+              "Resource": "*",
             },
           ],
           "Version": "2012-10-17",
@@ -1522,6 +1500,7 @@ Object {
       "Type": "AWS::EC2::VPCGatewayAttachment",
     },
     "awscdkawseksClusterResourceProviderNestedStackawscdkawseksClusterResourceProviderNestedStackResource9827C454": Object {
+      "DeletionPolicy": "Delete",
       "Properties": Object {
         "Parameters": Object {
           "referencetotestAssetParameters50e10880d134a01b440991fc77d217f39f01c2d56945215ee9a3b81187c6f3b1S3BucketD4A6DEA9Ref": Object {
@@ -1591,8 +1570,10 @@ Object {
         },
       },
       "Type": "AWS::CloudFormation::Stack",
+      "UpdateReplacePolicy": "Delete",
     },
     "awscdkawseksKubectlProviderNestedStackawscdkawseksKubectlProviderNestedStackResourceA7AEBA6B": Object {
+      "DeletionPolicy": "Delete",
       "Properties": Object {
         "Parameters": Object {
           "referencetotestAssetParameters844c1a4b13479b359ea0e607dccb4a04b73e22cf88cf9b64feed2c5f0de213c0S3BucketA9F7BB33Ref": Object {
@@ -1637,9 +1618,6 @@ Object {
               "Arn",
             ],
           },
-          "referencetotestVpc2D302CD6Ref": Object {
-            "Ref": "Vpc8378EB38",
-          },
           "referencetotestVpcPrivateSubnet1SubnetD6A658CERef": Object {
             "Ref": "VpcPrivateSubnet1Subnet536B997A",
           },
@@ -1661,7 +1639,7 @@ Object {
               },
               "/",
               Object {
-                "Ref": "AssetParametersfb4a4d5e07aea968c0661e4759266d4ce48e5cb15eb4cf01a98c9743e173e3a8S3Bucket64D7DA01",
+                "Ref": "AssetParameters0ba1d27f69bdaacb759545685f6f19a8b80634af584731cf88ef3f27909384edS3Bucket93A61513",
               },
               "/",
               Object {
@@ -1671,7 +1649,7 @@ Object {
                     "Fn::Split": Array [
                       "||",
                       Object {
-                        "Ref": "AssetParametersfb4a4d5e07aea968c0661e4759266d4ce48e5cb15eb4cf01a98c9743e173e3a8S3VersionKeyDAA66008",
+                        "Ref": "AssetParameters0ba1d27f69bdaacb759545685f6f19a8b80634af584731cf88ef3f27909384edS3VersionKey6D7EFA39",
                       },
                     ],
                   },
@@ -1684,7 +1662,7 @@ Object {
                     "Fn::Split": Array [
                       "||",
                       Object {
-                        "Ref": "AssetParametersfb4a4d5e07aea968c0661e4759266d4ce48e5cb15eb4cf01a98c9743e173e3a8S3VersionKeyDAA66008",
+                        "Ref": "AssetParameters0ba1d27f69bdaacb759545685f6f19a8b80634af584731cf88ef3f27909384edS3VersionKey6D7EFA39",
                       },
                     ],
                   },
@@ -1695,6 +1673,7 @@ Object {
         },
       },
       "Type": "AWS::CloudFormation::Stack",
+      "UpdateReplacePolicy": "Delete",
     },
   },
 }

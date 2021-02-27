@@ -48,7 +48,8 @@
     "@aws-cdk/aws-eks": "^1.82.0",
     "@aws-cdk/aws-events-targets": "^1.82.0",
     "@aws-cdk/aws-iam": "^1.82.0",
-    "@aws-cdk/core": "^1.82.0"
+    "@aws-cdk/core": "^1.82.0",
+    "projen-automate-it": "^0.0.7"
   },
   "bundledDependencies": [],
   "license": "Apache-2.0",

@@ -5546,6 +5546,29 @@ progress@^2.0.0:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
+projen-automate-it@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/projen-automate-it/-/projen-automate-it-0.0.7.tgz#ce3ab8665ce494663fde567645d99f83a678c54c"
+  integrity sha512-A4Twr+yEu3rAbzklQyKagtrUHGDKjKDpRpNCnpdU3VkTieaCqog8pUbUgkliZVjQMmuyJCpLuf0h8ZMNX8HlBQ==
+  dependencies:
+    projen "^0.16.12"
+
+projen@^0.16.12:
+  version "0.16.19"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.16.19.tgz#9d29ba90184016435c7fac87fb49ca2f2fb31a5c"
+  integrity sha512-xbpt9ljMzBxQdYd2BFx4dXd7xa9ezmKIetRjt05JzClrz0l0vzbHF2Nfahai3EV2lTpxoMeo5cGF5G1Y1jk1Yw==
+  dependencies:
+    "@iarna/toml" "^2.2.5"
+    chalk "^4.1.0"
+    decamelize "^4.0.0"
+    fs-extra "^9.0.1"
+    glob "^7"
+    inquirer "^7.3.3"
+    semver "^7.3.2"
+    xmlbuilder2 "^2.4.0"
+    yaml "^1.10.0"
+    yargs "^16.2.0"
+
 projen@^0.16.17:
   version "0.16.17"
   resolved "https://registry.yarnpkg.com/projen/-/projen-0.16.17.tgz#48f8be09c5ab6d008a5c5b75eaf20f72768aff9f"

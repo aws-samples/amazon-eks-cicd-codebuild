@@ -21,14 +21,14 @@
     "diff": "npx projen diff"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.19",
+    "@types/jest": "^26.0.20",
     "@types/node": "^10.17.0",
     "@typescript-eslint/eslint-plugin": "^4.3.0",
     "@typescript-eslint/parser": "^4.3.0",
     "aws-cdk": "^1.82.0",
-    "eslint": "^7.16.0",
+    "eslint": "^7.20.0",
     "eslint-import-resolver-node": "^0.3.4",
-    "eslint-import-resolver-typescript": "^2.3.0",
+    "eslint-import-resolver-typescript": "^2.4.0",
     "eslint-plugin-import": "^2.22.1",
     "jest": "^26.6.3",
     "jest-junit": "^12",
@@ -55,18 +55,8 @@
   "license": "Apache-2.0",
   "version": "0.0.0",
   "jest": {
-    "testMatch": [
-      "**/__tests__/**/*.ts?(x)",
-      "**/?(*.)+(spec|test).ts?(x)"
-    ],
     "clearMocks": true,
     "collectCoverage": true,
-    "coverageReporters": [
-      "json",
-      "lcov",
-      "clover",
-      "text"
-    ],
     "coverageDirectory": "coverage",
     "coveragePathIgnorePatterns": [
       "/node_modules/"
@@ -74,8 +64,9 @@
     "testPathIgnorePatterns": [
       "/node_modules/"
     ],
-    "watchPathIgnorePatterns": [
-      "/node_modules/"
+    "testMatch": [
+      "**/__tests__/**/*.ts?(x)",
+      "**/?(*.)+(spec|test).ts?(x)"
     ],
     "reporters": [
       "default",

@@ -4576,10 +4576,10 @@ json-schema@0.2.3:
   resolved "https://registry.yarnpkg.com/json-schema/-/json-schema-0.2.3.tgz#b480c892e59a2f05954ce727bd3f2a4e882f9e13"
   integrity sha1-tIDIkuWaLwWVTOcnvT8qTogvnhM=
 
-json-schema@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/json-schema/-/json-schema-0.3.0.tgz#90a9c5054bd065422c00241851ce8d59475b701b"
-  integrity sha512-TYfxx36xfl52Rf1LU9HyWSLGPdYLL+SQ8/E/0yVyKG8wCCDaSrhPap0vEdlsZWRaS6tnKKLPGiEJGiREVC8kxQ==
+json-schema@^0.2.5:
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/json-schema/-/json-schema-0.2.5.tgz#97997f50972dd0500214e208c407efa4b5d7063b"
+  integrity sha512-gWJOWYFrhQ8j7pVm0EM8Slr+EPVq1Phf6lvzvD/WCeqkrx/f2xBI0xOsRRS9xCn3I4vKtP519dvs3TP09r24wQ==
 
 json-stable-stringify-without-jsonify@^1.0.1:
   version "1.0.1"
@@ -5553,22 +5553,7 @@ projen-automate-it@^0.0.7:
   dependencies:
     projen "^0.16.12"
 
-projen@^0.12.15:
-  version "0.12.15"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.12.15.tgz#810ba90d46df385df05ea9d53db2fbc628fe3f09"
-  integrity sha512-VHpQHoHbg2bedQc3B5vpdyyLxbhchZwo91yXlhO6aHJW2EhudIDMzjx57WAfSMwEvAtI1slLVjcUU6ivrerM9w==
-  dependencies:
-    "@iarna/toml" "^2.2.5"
-    chalk "^4.1.0"
-    decamelize "^4.0.0"
-    fs-extra "^9.0.1"
-    glob "^7"
-    inquirer "^7.3.3"
-    semver "^7.3.2"
-    yaml "^1.10.0"
-    yargs "^16.1.1"
-
-projen@^0.16.12:
+projen@^0.16.12, projen@^0.16.17:
   version "0.16.19"
   resolved "https://registry.yarnpkg.com/projen/-/projen-0.16.19.tgz#9d29ba90184016435c7fac87fb49ca2f2fb31a5c"
   integrity sha512-xbpt9ljMzBxQdYd2BFx4dXd7xa9ezmKIetRjt05JzClrz0l0vzbHF2Nfahai3EV2lTpxoMeo5cGF5G1Y1jk1Yw==
@@ -6314,7 +6299,7 @@ stack-utils@^2.0.2:
   dependencies:
     escape-string-regexp "^2.0.0"
 
-standard-version@^9.0.0:
+standard-version@^9:
   version "9.1.1"
   resolved "https://registry.yarnpkg.com/standard-version/-/standard-version-9.1.1.tgz#7561df6351b075a44544ce3d3ebcffcb9582ba5a"
   integrity sha512-PF9JnRauBwH7DAkmefYu1mB2Kx0MVG13udqDTFmDUiogbyikBAHBdMrVuauxtAb2YIkyZ3FMYCNv0hqUKMOPww==
@@ -6663,7 +6648,7 @@ trim-off-newlines@^1.0.0:
   resolved "https://registry.yarnpkg.com/trim-off-newlines/-/trim-off-newlines-1.0.1.tgz#9f9ba9d9efa8764c387698bcbfeb2c848f11adb3"
   integrity sha1-n5up2e+odkw4dpi8v+sshI8RrbM=
 
-ts-jest@^26.5.2:
+ts-jest@^26.4.4:
   version "26.5.2"
   resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-26.5.2.tgz#5281d6b44c2f94f71205728a389edc3d7995b0c4"
   integrity sha512-bwyJ2zJieSugf7RB+o8fgkMeoMVMM2KPDE0UklRLuACxjwJsOrZNo6chrcScmK33YavPSwhARffy8dZx5LJdUQ==
@@ -7124,7 +7109,7 @@ yargs@^15.4.1:
     y18n "^4.0.0"
     yargs-parser "^18.1.2"
 
-yargs@^16.0.0, yargs@^16.1.1, yargs@^16.2.0:
+yargs@^16.0.0, yargs@^16.2.0:
   version "16.2.0"
   resolved "https://registry.yarnpkg.com/yargs/-/yargs-16.2.0.tgz#1c82bf0f6b6a66eafce7ef30e376f49a12477f66"
   integrity sha512-D1mvvtDG0L5ft/jGWkLpG1+m0eQxOfaBvTNELraWj22wSVUMWxZUvYgJYcKh6jGGIkJFhH4IZPQhR4TKpc8mBw==

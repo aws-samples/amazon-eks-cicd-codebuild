@@ -1,7 +1,7 @@
 const { AwsCdkTypeScriptApp } = require('projen');
 const { Automation } = require('projen-automate-it');
 
-const AUTOMATION_TOKEN = 'AUTOMATION_GITHUB_TOKEN';
+const AUTOMATION_TOKEN = 'PROJEN_GITHUB_TOKEN';
 
 const project = new AwsCdkTypeScriptApp({
   cdkVersion: '1.82.0',

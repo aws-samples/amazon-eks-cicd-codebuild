@@ -1789,9 +1789,9 @@ aws-cdk@^1.82.0:
     yargs "^16.2.0"
 
 aws-sdk@^2.848.0:
-  version "2.857.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.857.0.tgz#830fdabb716ca1b4b621053749e89119b77899cf"
-  integrity sha512-GIdknKB08AKe4tL6T9kMWv2RZUAI044Z/PkJ0bd5thqDnct8AhEusIO0bpoQdM8RBWgjlB0AUBHroI7AdEnX8g==
+  version "2.858.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.858.0.tgz#3a25fd85170b8298c469c2dacc511adf93a0b8c0"
+  integrity sha512-VXNnGmPcZu4ZRc0yqw4F6d43edrMMKQwOmZX9/hQW/l5DFGqdGzvaDKljZyD1FHNbmaxXz09RfLzjVEmq+CVzA==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
@@ -2282,9 +2282,9 @@ concat-stream@^2.0.0:
     typedarray "^0.0.6"
 
 constructs@^3.2.0:
-  version "3.3.55"
-  resolved "https://registry.yarnpkg.com/constructs/-/constructs-3.3.55.tgz#ee54bd2202d8d72d9ce10694f055054d8cffef1f"
-  integrity sha512-PKlPeHnIN7EAdanoVpwUnj6Zb5Zhgb6lCQ1YTES52puksbw34TG7oqO2kzmTVTK3MVDMUdhCDKyroaVmNOtiiw==
+  version "3.3.58"
+  resolved "https://registry.yarnpkg.com/constructs/-/constructs-3.3.58.tgz#bcc8759507e1f4a085da1db8b46f99f5fe474537"
+  integrity sha512-TSDyDQmHWs0fBJQjQIjVC5Hd7iLy62Pd6PTN4wOlr4dRGkByYS7Fzb87HOIewN6AZAZPxjCVR7MqtJM8RgVBsg==
 
 contains-path@^0.1.0:
   version "0.1.0"
@@ -5576,10 +5576,10 @@ projen-automate-it@^0.0.7:
   dependencies:
     projen "^0.16.12"
 
-projen@^0.16.12, projen@^0.16.35:
-  version "0.16.35"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.16.35.tgz#1547f9bb7b1ea9d4450d3045014c239d0c0b11e6"
-  integrity sha512-AVpuGSw5oRdp7xhz5FkyDGyoLkgoa8IGtzw/w3qsLJ0zIKr5M6sSJLAVmBHO3D88RDjMkHfHCkfS7anG1mMEaA==
+projen@^0.16.12, projen@^0.16.36:
+  version "0.16.36"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.16.36.tgz#22de64b19b2b8794ef7f40afa820291129cb5b85"
+  integrity sha512-8HnnQ//hqnJoYf6ySYiZBh6T64PRBpbGsn119PXZfP2aIPAFHikGoCCGGa631FD44SDKXKlXOWoDPD3RAH4IUQ==
   dependencies:
     "@iarna/toml" "^2.2.5"
     chalk "^4.1.0"

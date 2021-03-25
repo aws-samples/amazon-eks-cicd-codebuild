@@ -1,8 +1,6 @@
 {
   "name": "eks-cicd-codebuild",
   "scripts": {
-    "projen": "npx projen",
-    "start": "npx projen start",
     "clobber": "npx projen clobber",
     "compile": "npx projen compile",
     "test:compile": "npx projen test:compile",
@@ -13,12 +11,13 @@
     "test:watch": "npx projen test:watch",
     "test:update": "npx projen test:update",
     "projen:upgrade": "npx projen projen:upgrade",
-    "watch": "npx projen watch",
     "eslint": "npx projen eslint",
     "synth": "npx projen synth",
     "deploy": "npx projen deploy",
     "destroy": "npx projen destroy",
-    "diff": "npx projen diff"
+    "diff": "npx projen diff",
+    "projen": "npx projen",
+    "start": "npx projen start"
   },
   "devDependencies": {
     "@types/jest": "^26.0.20",
@@ -33,7 +32,7 @@
     "jest": "^26.6.3",
     "jest-junit": "^12",
     "json-schema": "^0.3.0",
-    "projen": "^0.17.16",
+    "projen": "^0.17.17",
     "standard-version": "^9",
     "ts-jest": "^26.5.2",
     "ts-node": "^9.1.1",

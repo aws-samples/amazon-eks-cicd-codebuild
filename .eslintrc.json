@@ -12,7 +12,7 @@
   "parserOptions": {
     "ecmaVersion": 2018,
     "sourceType": "module",
-    "project": "./tsconfig.eslint.json"
+    "project": "./tsconfig.jest.json"
   },
   "extends": [
     "plugin:import/typescript"
@@ -27,7 +27,7 @@
     "import/resolver": {
       "node": {},
       "typescript": {
-        "project": "./tsconfig.eslint.json"
+        "directory": "./tsconfig.json"
       }
     }
   },
@@ -124,8 +124,8 @@
       "error",
       {
         "devDependencies": [
-          "**/test/**",
-          "**/build-tools/**"
+          "**/build-tools/**",
+          "**/test/**"
         ],
         "optionalDependencies": false,
         "peerDependencies": true

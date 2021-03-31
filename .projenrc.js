@@ -20,6 +20,13 @@ const project = new AwsCdkTypeScriptApp({
   defaultReleaseBranch: 'master',
 });
 
+project.addFields({
+  resolutions: {
+    netmask: '2.0.1',
+  },
+});
+
+
 const automation = new Automation(project, { automationToken: AUTOMATION_TOKEN });
 automation.autoApprove();
 automation.autoMerge();

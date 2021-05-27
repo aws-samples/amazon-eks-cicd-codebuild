@@ -52,8 +52,18 @@
       "type": "build"
     },
     {
+      "name": "npm-check-updates",
+      "version": "^11",
+      "type": "build"
+    },
+    {
+      "name": "npm-check-updates",
+      "version": "^11",
+      "type": "build"
+    },
+    {
       "name": "projen",
-      "version": "^0.17.92",
+      "version": "^0.18.12",
       "type": "build"
     },
     {
@@ -67,6 +77,7 @@
     },
     {
       "name": "ts-node",
+      "version": "^9",
       "type": "build"
     },
     {
@@ -116,10 +127,6 @@
     {
       "name": "@aws-cdk/core",
       "version": "^1.82.0",
-      "type": "runtime"
-    },
-    {
-      "name": "projen-automate-it",
       "type": "runtime"
     }
   ],

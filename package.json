@@ -22,24 +22,24 @@
     "start": "npx projen start"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.22",
+    "@types/jest": "^26.0.23",
     "@types/node": "^10.17.0",
-    "@typescript-eslint/eslint-plugin": "^4.3.0",
-    "@typescript-eslint/parser": "^4.3.0",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
     "aws-cdk": "^1.82.0",
-    "eslint": "^7.23.0",
+    "eslint": "^7.27.0",
     "eslint-import-resolver-node": "^0.3.4",
     "eslint-import-resolver-typescript": "^2.4.0",
-    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-import": "^2.23.4",
     "jest": "^26.6.3",
     "jest-junit": "^12",
     "json-schema": "^0.3.0",
     "npm-check-updates": "^11",
     "projen": "^0.18.12",
     "standard-version": "^9",
-    "ts-jest": "^26.5.4",
+    "ts-jest": "^26.5.6",
     "ts-node": "^9",
-    "typescript": "^3.9.5"
+    "typescript": "^3.9.9"
   },
   "dependencies": {
     "@aws-cdk/assert": "^1.82.0",

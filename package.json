@@ -2,8 +2,6 @@
   "name": "eks-cicd-codebuild",
   "scripts": {
     "clobber": "npx projen clobber",
-    "bump": "npx projen bump",
-    "unbump": "npx projen unbump",
     "compile": "npx projen compile",
     "test:compile": "npx projen test:compile",
     "test": "npx projen test",
@@ -24,8 +22,8 @@
   "devDependencies": {
     "@types/jest": "^26.0.23",
     "@types/node": "^10.17.0",
-    "@typescript-eslint/eslint-plugin": "^4.26.0",
-    "@typescript-eslint/parser": "^4.26.0",
+    "@typescript-eslint/eslint-plugin": "^4.26.1",
+    "@typescript-eslint/parser": "^4.26.1",
     "aws-cdk": "^1.82.0",
     "eslint": "^7.28.0",
     "eslint-import-resolver-node": "^0.3.4",
@@ -35,8 +33,7 @@
     "jest-junit": "^12",
     "json-schema": "^0.3.0",
     "npm-check-updates": "^11",
-    "projen": "^0.18.12",
-    "standard-version": "^9",
+    "projen": "^0.22.8",
     "ts-jest": "^26.5.6",
     "ts-node": "^9",
     "typescript": "^3.9.9"

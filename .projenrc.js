@@ -1,4 +1,6 @@
-const { AwsCdkTypeScriptApp } = require('projen');
+const { AwsCdkTypeScriptApp, DependenciesUpgradeMechanism } = require('projen');
+
+const AUTOMATION_TOKEN = 'PROJEN_AUTOMATION_TOKEN';
 
 const project = new AwsCdkTypeScriptApp({
   cdkVersion: '1.82.0',
@@ -12,10 +14,18 @@ const project = new AwsCdkTypeScriptApp({
     '@aws-cdk/aws-codecommit',
     '@aws-cdk/aws-events-targets',
   ],
-  dependabot: false,
-  defaultReleaseBranch: 'master',
+  depsUpgrade: DependenciesUpgradeMechanism.githubWorkflow({
+    workflowOptions: {
+      labels: ['auto-approve', 'auto-merge'],
+      secret: AUTOMATION_TOKEN,
+    },
+  }),
+  autoApproveOptions: {
+    secret: 'GITHUB_TOKEN',
+    allowedUsernames: ['pahud'],
+  },
+  defaultReleaseBranch: 'main',
 });
-
 
 const common_exclude = ['cdk.out', 'cdk.context.json', 'dockerAssets.d', 'yarn-error.log'];
 project.npmignore.exclude('images', ...common_exclude);

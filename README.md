@@ -107,6 +107,20 @@ Q:  when I `cdk deploy`, I got can't find **CDK_DEFAULT_REGION** or **CDK_DEFAUL
 
 A: You need configure your CDK environment, check [this chapter](https://docs.aws.amazon.com/en_us/cdk/latest/guide/environments.html) in AWS CDK Developer Guide to configure your Environment correctly.
 
+Q:  when I `cdk deploy`, I got error while load metadata for public.ecr.aws/amazonlinux/amazonlinux:latest.
+
+A: Try to run below command.
+
+`docker pull public.ecr.aws/amazonlinux/amazonlinux:latest`   
+
+If you encounter the following error
+
+>Error response from daemon: pull access denied for public.ecr.aws/amazonlinux/amazonlinux, repository does not exist or may require 'docker login': denied: Your authorization token has expired. Reauthenticate and try again.
+
+You may need docker login to authenticate against the ecr-public like
+
+`aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/amazonlinux`
+
 Q: How can I deploy to a default VPC or any existing one?
 
 A:

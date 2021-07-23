@@ -15,6 +15,7 @@ const project = new AwsCdkTypeScriptApp({
     '@aws-cdk/aws-events-targets',
   ],
   depsUpgrade: DependenciesUpgradeMechanism.githubWorkflow({
+    ignoreProjen: false,
     workflowOptions: {
       labels: ['auto-approve', 'auto-merge'],
       secret: AUTOMATION_TOKEN,

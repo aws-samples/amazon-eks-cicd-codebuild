@@ -2,7 +2,6 @@
   "tasks": {
     "clobber": {
       "name": "clobber",
-      "category": "30.maintain",
       "description": "hard resets to HEAD of origin and cleans the local repo",
       "env": {
         "BRANCH": "$(git branch --show-current)"
@@ -35,12 +34,10 @@
     },
     "compile": {
       "name": "compile",
-      "category": "00.build",
       "description": "Only compile"
     },
     "test:compile": {
       "name": "test:compile",
-      "category": "10.test",
       "description": "compiles the test code",
       "steps": [
         {
@@ -50,7 +47,6 @@
     },
     "test": {
       "name": "test",
-      "category": "10.test",
       "description": "Run tests",
       "steps": [
         {
@@ -69,7 +65,6 @@
     },
     "build": {
       "name": "build",
-      "category": "00.build",
       "description": "Full release build (test+compile)",
       "steps": [
         {
@@ -88,7 +83,6 @@
     },
     "test:watch": {
       "name": "test:watch",
-      "category": "10.test",
       "description": "Run jest in watch mode",
       "steps": [
         {
@@ -98,7 +92,6 @@
     },
     "test:update": {
       "name": "test:update",
-      "category": "10.test",
       "description": "Update jest snapshots",
       "steps": [
         {
@@ -114,34 +107,13 @@
       },
       "steps": [
         {
-          "exec": "npm-check-updates --upgrade --target=minor --reject='projen'"
+          "exec": "npm-check-updates --upgrade --target=minor"
         },
         {
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser aws-cdk eslint eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import jest jest-junit json-schema npm-check-updates ts-jest ts-node typescript @aws-cdk/assert @aws-cdk/aws-codebuild @aws-cdk/aws-codecommit @aws-cdk/aws-ec2 @aws-cdk/aws-ecr @aws-cdk/aws-eks @aws-cdk/aws-events-targets @aws-cdk/aws-iam @aws-cdk/core"
-        },
-        {
-          "exec": "npx projen"
-        }
-      ]
-    },
-    "upgrade-projen": {
-      "name": "upgrade-projen",
-      "description": "upgrade projen",
-      "env": {
-        "CI": "0"
-      },
-      "steps": [
-        {
-          "exec": "npm-check-updates --upgrade --target=minor --filter='projen'"
-        },
-        {
-          "exec": "yarn install --check-files"
-        },
-        {
-          "exec": "yarn upgrade projen"
+          "exec": "yarn upgrade"
         },
         {
           "exec": "npx projen"
@@ -158,17 +130,15 @@
     },
     "watch": {
       "name": "watch",
-      "category": "00.build",
       "description": "Watch & compile in the background",
       "steps": [
         {
-          "exec": "tsc -w"
+          "exec": "tsc --build -w"
         }
       ]
     },
     "eslint": {
       "name": "eslint",
-      "category": "10.test",
       "description": "Runs eslint against the codebase",
       "steps": [
         {
@@ -178,7 +148,6 @@
     },
     "synth": {
       "name": "synth",
-      "category": "00.build",
       "description": "Synthesizes your cdk app into cdk.out (part of \"yarn build\")",
       "steps": [
         {
@@ -188,7 +157,6 @@
     },
     "deploy": {
       "name": "deploy",
-      "category": "20.release",
       "description": "Deploys your CDK app to the AWS cloud",
       "steps": [
         {
@@ -198,7 +166,6 @@
     },
     "destroy": {
       "name": "destroy",
-      "category": "20.release",
       "description": "Destroys your cdk app in the AWS cloud",
       "steps": [
         {
@@ -208,7 +175,6 @@
     },
     "diff": {
       "name": "diff",
-      "category": "99.misc",
       "description": "Diffs the currently deployed app against your code",
       "steps": [
         {

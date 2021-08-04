@@ -8,26 +8,27 @@ import * as targets from '@aws-cdk/aws-events-targets';
 import * as iam from '@aws-cdk/aws-iam';
 import * as cdk from '@aws-cdk/core';
 
-export class DemoStack extends cdk.Stack {
-  constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
-    super(scope, id, props);
+export class Demo extends cdk.Construct {
+  constructor(scope: cdk.Construct, id: string) {
+    super(scope, id);
 
     const vpc = getOrCreateVpc(this);
-
     const cluster = new eks.Cluster(this, 'Cluster', {
       vpc,
-      version: eks.KubernetesVersion.V1_18,
+      version: eks.KubernetesVersion.V1_20,
       defaultCapacity: 2,
     });
+
+    const stackName = cdk.Stack.of(this).stackName;
 
     const ecrRepo = new ecr.Repository(this, 'EcrRepo');
 
     const repository = new codecommit.Repository(this, 'CodeCommitRepo', {
-      repositoryName: `${this.stackName}-repo`,
+      repositoryName: `${stackName}-repo`,
     });
 
     const project = new codebuild.Project(this, 'MyProject', {
-      projectName: `${this.stackName}`,
+      projectName: `${stackName}`,
       source: codebuild.Source.codeCommit({ repository }),
       environment: {
         buildImage: codebuild.LinuxBuildImage.fromAsset(this, 'CustomImage', {
@@ -74,7 +75,7 @@ export class DemoStack extends cdk.Stack {
     });
 
     repository.onCommit('OnCommit', {
-      target: new targets.CodeBuildProject(codebuild.Project.fromProjectArn(this, 'OnCommitEvent', project.projectArn)),
+      target: new targets.CodeBuildProject(project),
     });
 
     ecrRepo.grantPullPush(project.role!);
@@ -91,20 +92,21 @@ export class DemoStack extends cdk.Stack {
   }
 }
 
-const devEnv = {
-  account: process.env.CDK_DEFAULT_ACCOUNT,
-  region: process.env.CDK_DEFAULT_REGION,
-};
-
 const app = new cdk.App();
 
-new DemoStack(app, 'eks-cicd-codebuild-stack', { env: devEnv });
+const env = {
+  region: process.env.CDK_DEFAULT_REGION || 'us-east-1',
+  account: process.env.CDK_DEFAULT_ACCOUNT,
+};
 
+const stack = new cdk.Stack(app, 'eks-cicd-codebuild-stack', { env });
+
+new Demo(stack, 'demo');
 
 function getOrCreateVpc(scope: cdk.Construct): ec2.IVpc {
   // use an existing vpc or create a new one
-  return scope.node.tryGetContext('use_default_vpc') === '1' ?
-    ec2.Vpc.fromLookup(scope, 'Vpc', { isDefault: true }) :
+  return scope.node.tryGetContext('use_default_vpc') === '1'
+    || process.env.CDK_USE_DEFAULT_VPC === '1' ? ec2.Vpc.fromLookup(scope, 'Vpc', { isDefault: true }) :
     scope.node.tryGetContext('use_vpc_id') ?
       ec2.Vpc.fromLookup(scope, 'Vpc', { vpcId: scope.node.tryGetContext('use_vpc_id') }) :
       new ec2.Vpc(scope, 'Vpc', { maxAzs: 3, natGateways: 1 });

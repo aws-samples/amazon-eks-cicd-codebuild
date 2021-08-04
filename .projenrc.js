@@ -1,6 +1,6 @@
 const { AwsCdkTypeScriptApp, DependenciesUpgradeMechanism } = require('projen');
 
-const AUTOMATION_TOKEN = 'PROJEN_AUTOMATION_TOKEN';
+const AUTOMATION_TOKEN = 'PROJEN_GITHUB_TOKEN';
 
 const project = new AwsCdkTypeScriptApp({
   cdkVersion: '1.82.0',
@@ -15,6 +15,7 @@ const project = new AwsCdkTypeScriptApp({
     '@aws-cdk/aws-events-targets',
   ],
   depsUpgrade: DependenciesUpgradeMechanism.githubWorkflow({
+    ignoreProjen: false,
     workflowOptions: {
       labels: ['auto-approve', 'auto-merge'],
       secret: AUTOMATION_TOKEN,

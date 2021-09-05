@@ -5,8 +5,8 @@ junit.xml
 /coverage/
 /.mergify.yml
 /test/
-!/lib/
 /src/
+!/lib/
 !/lib/**/*.js
 !/lib/**/*.d.ts
 dist

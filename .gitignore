@@ -50,6 +50,7 @@ cdk.out/
 .cdk.staging/
 .parcel-cache/
 !/cdk.json
+!/.gitpod.yml
 cdk.out
 cdk.context.json
 dockerAssets.d

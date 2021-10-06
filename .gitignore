@@ -36,7 +36,6 @@ junit.xml
 /coverage/
 !/.github/workflows/build.yml
 !/.mergify.yml
-!/.github/workflows/upgrade.yml
 !/.github/pull_request_template.md
 !/test/
 !/tsconfig.json
@@ -55,3 +54,4 @@ cdk.out
 cdk.context.json
 dockerAssets.d
 yarn-error.log
+!/.github/workflows/upgrade.yml

@@ -44,10 +44,10 @@ junit.xml
 /lib
 /dist/
 !/.eslintrc.json
-cdk.out/
+!/cdk.json
+/cdk.out/
 .cdk.staging/
 .parcel-cache/
-!/cdk.json
 !/.gitpod.yml
 cdk.out
 cdk.context.json

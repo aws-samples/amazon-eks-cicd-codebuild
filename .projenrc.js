@@ -1,8 +1,8 @@
-const { AwsCdkTypeScriptApp, DevEnvironmentDockerImage, Gitpod } = require('projen');
+const { awscdk, DevEnvironmentDockerImage, Gitpod } = require('projen');
 
 const AUTOMATION_TOKEN = 'PROJEN_GITHUB_TOKEN';
 
-const project = new AwsCdkTypeScriptApp({
+const project = new awscdk.AwsCdkTypeScriptApp({
   cdkVersion: '1.82.0',
   name: 'eks-cicd-codebuild',
   cdkDependencies: [

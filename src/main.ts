@@ -1,15 +1,18 @@
 import * as path from 'path';
-import * as codebuild from '@aws-cdk/aws-codebuild';
-import * as codecommit from '@aws-cdk/aws-codecommit';
-import * as ec2 from '@aws-cdk/aws-ec2';
-import * as ecr from '@aws-cdk/aws-ecr';
-import * as eks from '@aws-cdk/aws-eks';
-import * as targets from '@aws-cdk/aws-events-targets';
-import * as iam from '@aws-cdk/aws-iam';
-import * as cdk from '@aws-cdk/core';
+import {
+  Stack, App, CfnOutput,
+  aws_codebuild as codebuild,
+  aws_codecommit as codecommit,
+  aws_ec2 as ec2,
+  aws_ecr as ecr,
+  aws_eks as eks,
+  aws_events_targets as targets,
+  aws_iam as iam,
+} from 'aws-cdk-lib';
+import { Construct } from 'constructs';
 
-export class Demo extends cdk.Construct {
-  constructor(scope: cdk.Construct, id: string) {
+export class Demo extends Construct {
+  constructor(scope: Construct, id: string) {
     super(scope, id);
 
     const vpc = getOrCreateVpc(this);
@@ -19,7 +22,7 @@ export class Demo extends cdk.Construct {
       defaultCapacity: 2,
     });
 
-    const stackName = cdk.Stack.of(this).stackName;
+    const stackName = Stack.of(this).stackName;
 
     const ecrRepo = new ecr.Repository(this, 'EcrRepo');
 
@@ -85,25 +88,25 @@ export class Demo extends cdk.Construct {
       resources: [`${cluster.clusterArn}`],
     }));
 
-    new cdk.CfnOutput(this, 'CodeCommitRepoName', { value: `${repository.repositoryName}` });
-    new cdk.CfnOutput(this, 'CodeCommitRepoArn', { value: `${repository.repositoryArn}` });
-    new cdk.CfnOutput(this, 'CodeCommitCloneUrlSsh', { value: `${repository.repositoryCloneUrlSsh}` });
-    new cdk.CfnOutput(this, 'CodeCommitCloneUrlHttp', { value: `${repository.repositoryCloneUrlHttp}` });
+    new CfnOutput(this, 'CodeCommitRepoName', { value: `${repository.repositoryName}` });
+    new CfnOutput(this, 'CodeCommitRepoArn', { value: `${repository.repositoryArn}` });
+    new CfnOutput(this, 'CodeCommitCloneUrlSsh', { value: `${repository.repositoryCloneUrlSsh}` });
+    new CfnOutput(this, 'CodeCommitCloneUrlHttp', { value: `${repository.repositoryCloneUrlHttp}` });
   }
 }
 
-const app = new cdk.App();
+const app = new App();
 
 const env = {
   region: process.env.CDK_DEFAULT_REGION || 'us-east-1',
   account: process.env.CDK_DEFAULT_ACCOUNT,
 };
 
-const stack = new cdk.Stack(app, 'eks-cicd-codebuild-stack', { env });
+const stack = new Stack(app, 'eks-cicd-codebuild-stack', { env });
 
 new Demo(stack, 'demo');
 
-function getOrCreateVpc(scope: cdk.Construct): ec2.IVpc {
+function getOrCreateVpc(scope: Construct): ec2.IVpc {
   // use an existing vpc or create a new one
   return scope.node.tryGetContext('use_default_vpc') === '1'
     || process.env.CDK_USE_DEFAULT_VPC === '1' ? ec2.Vpc.fromLookup(scope, 'Vpc', { isDefault: true }) :

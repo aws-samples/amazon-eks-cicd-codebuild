@@ -638,6 +638,11 @@ Object {
     },
     "DemoEcrRepo2DA11D32": Object {
       "DeletionPolicy": "Retain",
+      "Properties": Object {
+        "ImageScanningConfiguration": Object {
+          "ScanOnPush": false,
+        },
+      },
       "Type": "AWS::ECR::Repository",
       "UpdateReplacePolicy": "Retain",
     },
@@ -1437,7 +1442,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/1a1a0c2d30e5eac022bc6522e538468e4bfaa52e0188b22b8f9d03b0e0f8bba9.json",
+              "/e98d85ca64cbf9cdaef5525e33342fb34068b9f35734f0e1a65c11c5401d1018.json",
             ],
           ],
         },
@@ -1490,7 +1495,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/512ed80da91a74ae58b609e0302be13e527450d3628214f4e6c33e56c21a90ec.json",
+              "/33693918c6568a851c5f7fdec6a1d65c5a9a45dfe5a785f583c7767111db3497.json",
             ],
           ],
         },
